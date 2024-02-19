@@ -1,12 +1,12 @@
-'use client'
-
-import { useTab } from "@/components/entities/wrapper-tabs"
 import { ResizableHandle, ResizablePanel } from "@/components/ui/resizable"
 import CodeEditor from "@/components/widgets/code-editor"
 import EditorTabs from "./editor-tabs"
+import ShareButton from "./share-button"
 
-const EditorWrapper = () => {
-  const active_tab = useTab(state => state.tab)
+type Props = {
+  id?: string
+}
+const EditorWrapper = ({ id }: Props) => {
   return (
     <>
       <ResizablePanel
@@ -14,7 +14,10 @@ const EditorWrapper = () => {
         defaultSize={50}
       >
         <div className="w-full h-full flex-col">
-          <div className="w-full h-10 shrink border-b"><EditorTabs /></div>
+          <div className="w-full h-10 shrink flex items-center justify-between border-b">
+            <EditorTabs />
+            <div className="px-1"><ShareButton id={id} /></div>
+          </div>
           <CodeEditor />
         </div>
       </ResizablePanel>
