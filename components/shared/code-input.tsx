@@ -20,10 +20,12 @@ const CodeInput = ({
 }: Props) => {
   return (
     <ReactCodeMirror
+      className="!editor-font"
       autoFocus
       indentWithTab
       onStatistics={onStatistics}
-      minHeight="24rem"
+      width="100%"
+      minHeight="inherit"
       value={value || ''}
       onChange={code => onValueChange && onValueChange(code)}
       theme={githubDarkInit({

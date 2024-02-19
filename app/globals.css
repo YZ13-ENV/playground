@@ -5,3 +5,6 @@
 .cm-cursor {
   border-left: 1.2px solid white !important;
 }
+.ͼ1, .cm-scroller {
+  font-family: var(--second-font) !important;
+}

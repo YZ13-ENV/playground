@@ -1,12 +1,17 @@
 import "ui/dist/style.css";
 import "./globals.css";
 import type { Metadata } from "next";
-import { Geologica } from "next/font/google";
+import { Geologica, JetBrains_Mono } from "next/font/google";
 const first_font = Geologica({
   subsets: ["latin", "cyrillic"],
   weight: ["600", "500", "400", "300", "200"],
   variable: "--root-font",
 });
+const second_font = JetBrains_Mono({
+  subsets: ["cyrillic", "latin"],
+  weight: "variable",
+  variable: "--second-font"
+})
 
 export const metadata: Metadata = {
   title: "Weecode Play",
@@ -17,7 +22,7 @@ export default function RootLayout({ children }: { children: JSX.Element }) {
   return (
     <html
       lang="en"
-      className={`${first_font.className} ${first_font.variable}`}
+      className={`${first_font.className} ${first_font.variable} ${second_font.variable}`}
     >
       <body className="min-h-screen dark">
         {children}
