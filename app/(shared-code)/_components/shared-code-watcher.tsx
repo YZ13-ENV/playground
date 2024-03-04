@@ -42,7 +42,7 @@ const SharedCodeWatcher = ({ shared_code }: Props) => {
       socket.emit('playground', shared_code.doc_id);
     });
     socket.on('playground', (data: DocSharedCode) => {
-      console.log(data)
+      // console.log(data)
       if (data) {
         setSharedCode(data)
         setDebouncedSharedCode(data)
@@ -57,7 +57,7 @@ const SharedCodeWatcher = ({ shared_code }: Props) => {
     });
     socket.on('disconnect', () => {
       setConnected(false)
-      console.log('Disconnected');
+      console.log('Disconnected from playground');
     });
     return () => {
       socket.close()
