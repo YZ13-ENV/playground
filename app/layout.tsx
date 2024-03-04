@@ -1,7 +1,7 @@
+import type { Metadata, Viewport } from "next";
+import { Geologica, JetBrains_Mono } from "next/font/google";
 import "ui/dist/style.css";
 import "./globals.css";
-import type { Metadata } from "next";
-import { Geologica, JetBrains_Mono } from "next/font/google";
 const first_font = Geologica({
   subsets: ["latin", "cyrillic"],
   weight: ["600", "500", "400", "300", "200"],
@@ -17,6 +17,9 @@ export const metadata: Metadata = {
   title: "Weecode Play",
   description: "Created by DM Family",
 };
+export const viewport: Viewport = {
+  themeColor: "#000"
+}
 
 export default function RootLayout({ children }: { children: JSX.Element }) {
   return (
