@@ -1,15 +1,14 @@
 'use client'
-import { Button } from "@/components/ui/button"
-import { useRouter } from "next/navigation"
-import { PrefetchKind } from "next/dist/client/components/router-reducer/router-reducer-types"
-import { useEffect, useState } from "react"
-import { useJS } from "@/components/entities/code/js"
-import { useHTML } from "@/components/entities/code/html"
-import { useCSS } from "@/components/entities/code/css"
-import { SharedScratchCode } from "@/types/playground"
 import { playground } from "@/api/playground"
-import { BiLoaderAlt } from 'react-icons/bi'
+import { useCSS } from "@/components/entities/code/css"
+import { useHTML } from "@/components/entities/code/html"
+import { useJS } from "@/components/entities/code/js"
+import { Button } from "@/components/ui/button"
 import { default_code } from "@/const/default-code"
+import { SharedScratchCode } from "@/types/playground"
+import { useRouter } from "next/navigation"
+import { useEffect, useState } from "react"
+import { BiLoaderAlt } from 'react-icons/bi'
 
 type Props = {
   id?: string
@@ -27,7 +26,7 @@ const ShareButton = ({ id }: Props) => {
   const { push, prefetch } = useRouter()
   const [loading, setLoading] = useState<boolean>(false)
   const [disabled, setDisabled] = useState<boolean>(false)
-  const shareCode = async() => {
+  const shareCode = async () => {
     setLoading(true)
     const code_to_share: SharedScratchCode = {
       html: html_code,
@@ -35,7 +34,7 @@ const ShareButton = ({ id }: Props) => {
       js: js_code
     }
     const uploaded = await playground.create(code_to_share)
-    if (uploaded) {
+    if (uploaded && uploaded.doc_id) {
       const uploaded_link = prefix + `/${uploaded.doc_id}`
       prefetch(uploaded_link)
       push(uploaded_link)
@@ -58,11 +57,11 @@ const ShareButton = ({ id }: Props) => {
       setHtml(default_code)
       setCss(default_code)
     }
-  },[id])
+  }, [id])
   if (link) return <Button variant='outline' onClick={copyLink} disabled={disabled || loading} size='sm'>Скопировать</Button>
   return (
     <Button onClick={shareCode} disabled={disabled || loading} size='sm' className="gap-2">
-      { loading && <BiLoaderAlt className="animate-spin" size={16} /> }
+      {loading && <BiLoaderAlt className="animate-spin" size={16} />}
       Поделиться
     </Button>
   )
