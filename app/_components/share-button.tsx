@@ -34,11 +34,12 @@ const ShareButton = ({ id }: Props) => {
       js: js_code
     }
     const uploaded = await playground.create(code_to_share)
+    // console.log(uploaded)
     if (uploaded && uploaded.doc_id) {
       const uploaded_link = prefix + `/${uploaded.doc_id}`
       prefetch(uploaded_link)
       push(uploaded_link)
-    }
+    } else setLoading(false)
   }
   const kdForCopy = () => {
     setDisabled(true)
