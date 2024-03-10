@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Geologica, JetBrains_Mono } from "next/font/google";
+import { WebVitals } from 'ui';
 import "ui/dist/style.css";
 import "./globals.css";
 const first_font = Geologica({
@@ -18,7 +19,8 @@ export const metadata: Metadata = {
   description: "Created by DM Family",
 };
 export const viewport: Viewport = {
-  themeColor: "#000"
+  themeColor: "#000",
+  colorScheme: "dark"
 }
 
 export default function RootLayout({ children }: { children: JSX.Element }) {
@@ -27,6 +29,7 @@ export default function RootLayout({ children }: { children: JSX.Element }) {
       lang="en"
       className={`${first_font.className} ${first_font.variable} ${second_font.variable}`}
     >
+      <WebVitals appId="darkmaterial-weecode-play" />
       <body className="min-h-screen dark">
         {children}
       </body>
