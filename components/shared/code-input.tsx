@@ -1,10 +1,10 @@
 'use client'
-import { githubDarkInit } from "@uiw/codemirror-theme-github"
-import ReactCodeMirror, { Statistics } from "@uiw/react-codemirror"
-import { LanguageName, loadLanguage } from "@uiw/codemirror-extensions-langs"
-import { javascript } from "@codemirror/lang-javascript"
 import { css } from "@codemirror/lang-css"
 import { html } from "@codemirror/lang-html"
+import { javascript } from "@codemirror/lang-javascript"
+import { LanguageName, loadLanguage } from "@uiw/codemirror-extensions-langs"
+import { githubDarkInit } from "@uiw/codemirror-theme-github"
+import ReactCodeMirror, { Statistics } from "@uiw/react-codemirror"
 
 type Props = {
   lang?: LanguageName
@@ -14,7 +14,7 @@ type Props = {
 }
 const CodeInput = ({
   onStatistics,
-  lang='html',
+  lang = 'html',
   onValueChange,
   value
 }: Props) => {
